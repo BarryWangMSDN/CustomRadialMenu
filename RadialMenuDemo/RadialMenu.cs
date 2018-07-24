@@ -19,5 +19,12 @@ namespace RadialMenuDemo
         {
             this.DefaultStyleKey = typeof(RadialMenu);
         }
+
+
+      
+       
+
+       
+
     }
 }

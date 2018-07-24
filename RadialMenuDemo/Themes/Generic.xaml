@@ -3,6 +3,99 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RadialMenuDemo">
 <!--step 1 Create Main Radial Menu-->
+
+    <Style TargetType="local:RadialMenuItem">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RadialMenuItem">
+                    <Grid>
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Name="toolTip" Content="{TemplateBinding ToolTip}" Visibility="{Binding Content,ElementName=toolTip,Converter={StaticResource NulltoVisibilityConverter}}"/>
+                        </ToolTipService.ToolTip>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="ExpandButtonPointerOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PointerOverElement"  Storyboard.TargetProperty="StrokeThickness" Duration="0" To="{Binding Menu.PointerOverElementThickness,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        <DoubleAnimation Storyboard.TargetName="ExpandIconTranslateTransform" Storyboard.TargetProperty="Y" Duration="0" To="0" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExpandButton" Storyboard.TargetProperty="Stroke">
+                                            <DiscreteObjectKeyFrame KeyTime="0"  Value="{Binding Stroke,ElementName=PointerOverElement}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IsSelected">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SelectedElement"  Storyboard.TargetProperty="StrokeThickness" Duration="0" To="{Binding Menu.SelectedElementThickness,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Path x:Name="HitTestElement" Stroke="#01010101"
+                            StrokeThickness="{Binding ArcSegments.HitTestElement.StrokeThickness,RelativeSource={RelativeSource TemplatedParent}}"   
+                              >
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure IsFilled="False" IsClosed="False" StartPoint="{Binding ArcSegments.HitTestElement.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ArcSegment Point="{Binding ArcSegments.HitTestElement.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" Size="{Binding ArcSegments.HitTestElement.Size,RelativeSource={RelativeSource TemplatedParent}}" SweepDirection="Clockwise"/>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+
+                        <ContentPresenter RenderTransformOrigin="0.5,0.5" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ContentPresenter.RenderTransform>
+                                <RotateTransform Angle="{Binding ContentAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+
+                        <Path x:Name="SelectedElement" StrokeThickness="0" Stroke="{Binding Menu.SelectedElementBackground, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure IsFilled="False" IsClosed="False" StartPoint="{Binding ArcSegments.SelectedElement.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ArcSegment Point="{Binding ArcSegments.SelectedElement.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" Size="{Binding ArcSegments.SelectedElement.Size,RelativeSource={RelativeSource TemplatedParent}}" SweepDirection="Clockwise"/>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+
+                        <Grid x:Name="ExpandButtonArea">
+                            <!--ExpandButtonArea-->
+                            <Path x:Name="PointerOverElement" StrokeThickness="0" Stroke="{Binding Menu.ExpandButtonPointerOverBackground,RelativeSource={RelativeSource TemplatedParent}}">
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure IsFilled="False" IsClosed="False" StartPoint="{Binding ArcSegments.PointerOverElement.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
+                                            <ArcSegment Point="{Binding ArcSegments.PointerOverElement.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" Size="{Binding ArcSegments.PointerOverElement.Size,RelativeSource={RelativeSource TemplatedParent}}" SweepDirection="Clockwise"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+
+                            <Path x:Name="ExpandButton" Stroke="{Binding Menu.ExpandButtonBackground,RelativeSource={RelativeSource TemplatedParent}}" StrokeThickness="{Binding Menu.ExpandAreaThickness,RelativeSource={RelativeSource TemplatedParent}}" >
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure IsFilled="False" IsClosed="False" StartPoint="{Binding ArcSegments.ExpandArea.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
+                                            <ArcSegment Point="{Binding ArcSegments.ExpandArea.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" Size="{Binding ArcSegments.ExpandArea.Size,RelativeSource={RelativeSource TemplatedParent}}" SweepDirection="Clockwise"/>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+
+                            <FontIcon x:Name="ExpandIcon" Glyph="&#xE0A0;" Visibility="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource VisibilityConverter}}" IsHitTestVisible="False" VerticalAlignment="Top" FontSize="12" FontFamily="Segoe UI Symbol">
+                                <FontIcon.RenderTransform>
+                                    <TranslateTransform x:Name="ExpandIconTranslateTransform" Y="{Binding ArcSegments.ExpandArea.ExpandIconY,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </FontIcon.RenderTransform>
+                            </FontIcon>
+                            <!--ExpandButtonArea-->
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="local:RadialMenu" >
         <Setter Property="Width" Value="260"/>
         <Setter Property="Height" Value="260"/>

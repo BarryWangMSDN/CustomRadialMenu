@@ -23,6 +23,99 @@ namespace RadialMenuDemo
             DependencyProperty.Register("ExpandAreaThickness", typeof(double), typeof(RadialMenu), new PropertyMetadata(25.0));
 
 
+        public bool IsOpen
+        {
+            get { return (bool)GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsOpenProperty =
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(RadialMenu), new PropertyMetadata(true));
+
+
+        public bool FillEmptyPlaces
+        {
+            get { return (bool)GetValue(FillEmptyPlacesProperty); }
+            set { SetValue(FillEmptyPlacesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FillEmptyPlaces.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FillEmptyPlacesProperty =
+            DependencyProperty.Register("FillEmptyPlaces", typeof(bool), typeof(RadialMenu), new PropertyMetadata(true));
+
+
+        public bool IsExpanded
+        {
+            get { return (bool)GetValue(IsExpandedProperty); }
+            set { SetValue(IsExpandedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsExpanded.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsExpandedProperty =
+            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(RadialMenu), new PropertyMetadata(false, new PropertyChangedCallback(OnIsExpandedChanged)));
+
+        private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as RadialMenu).IsExpandedChanged();
+        }
+
+        public double StartAngle
+        {
+            get { return (double)GetValue(StartAngleProperty); }
+            set { SetValue(StartAngleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for StartAngle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StartAngleProperty =
+            DependencyProperty.Register("StartAngle", typeof(double), typeof(RadialMenu), new PropertyMetadata(0.0));
+
+        public IRadialMenuItemsControl CurrentItem
+        {
+            get { return (IRadialMenuItemsControl)GetValue(CurrentItemProperty); }
+            set { SetValue(CurrentItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentItemProperty =
+            DependencyProperty.Register("CurrentItem", typeof(IRadialMenuItemsControl), typeof(RadialMenu), new PropertyMetadata(null, OnCurrentItemChanged));
+
+        private static void OnCurrentItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as RadialMenu).OnCurrentItemChanged(e);
+        }
+
+        public int SectorCount
+        {
+            get { return (int)GetValue(SectorCountProperty); }
+            set { SetValue(SectorCountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SectorCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SectorCountProperty =
+            DependencyProperty.Register("SectorCount", typeof(int), typeof(RadialMenu), new PropertyMetadata(0));
+
+
+        public double PointerOverElementThickness
+        {
+            get { return (double)GetValue(PointerOverElementThicknessProperty); }
+            set { SetValue(PointerOverElementThicknessProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PointerOverElementThickness.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PointerOverElementThicknessProperty =
+            DependencyProperty.Register("PointerOverElementThickness", typeof(double), typeof(RadialMenu), new PropertyMetadata(8.0));
+
+
+        public double SelectedElementThickness
+        {
+            get { return (double)GetValue(SelectedElementThicknessProperty); }
+            set { SetValue(SelectedElementThicknessProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedElementThickness.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedElementThicknessProperty =
+            DependencyProperty.Register("SelectedElementThickness", typeof(double), typeof(RadialMenu), new PropertyMetadata(8.0));
 
 
 

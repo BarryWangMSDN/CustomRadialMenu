@@ -4,12 +4,62 @@ using System.ComponentModel;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Shapes;
 using static RadialMenuDemo.RadialMenu;
 
 namespace RadialMenuDemo
 {
     public class  RadialMenuItem: Control,IRadialMenuItemsControl,INotifyPropertyChanged
     {
+        private FontIcon _expandIcon;
+        private Grid _expandButtonArea;
+        private Path _hitTestElement;
+
+        internal FontIcon ExpandIcon
+        {
+            get
+            {
+                return _expandIcon;
+            }
+        }
+
+        public string GroupName { get; set; }
+
+        public object Content
+        {
+            get { return (object)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("Content", typeof(object), typeof(RadialMenuItem), new PropertyMetadata(null));
+
+
+
+        public object ToolTip
+        {
+            get { return (object)GetValue(ToolTipProperty); }
+            set { SetValue(ToolTipProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ToolTip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ToolTipProperty =
+            DependencyProperty.Register("ToolTip", typeof(object), typeof(RadialMenuItem), new PropertyMetadata(null));
+
+
+
+        public int SectorCount
+        {
+            get { return (int)GetValue(SectorCountProperty); }
+            set { SetValue(SectorCountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SectorCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SectorCountProperty =
+            DependencyProperty.Register("SectorCount", typeof(int), typeof(RadialMenuItem), new PropertyMetadata(0));
+
+
         public event EventHandler IsSelectedChanged;
 
         public RadialMenuSelectionMode SelectionMode
