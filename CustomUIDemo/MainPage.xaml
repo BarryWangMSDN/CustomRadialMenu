@@ -8,11 +8,34 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:RoundPanel Width="300" Height="300">
-            <Rectangle Fill="Red"/>
-            <Rectangle Fill="Blue"/>
-            <Rectangle Fill="Green"/>
-  
-        </local:RoundPanel>
+       
+            <local:RoundPanel Background="Azure" Width="600" Height="400">
+                <Rectangle Fill="Red" Width="200" Height="100"/>
+                <Rectangle Fill="Blue" Width="200" Height="100"/>
+                <Rectangle Fill="Yellow" Width="200" Height="100"/>
+                <Rectangle Fill="Green" Width="200" Height="100"/>
+                <Rectangle Fill="Gray" Width="200" Height="100"/>
+                <Rectangle Fill="Black" Width="200" Height="100"/>
+                <Rectangle Fill="Gray" Width="200" Height="100"/>
+                <Rectangle Fill="Black" Width="200" Height="100"/>         
+            </local:RoundPanel>
+        
+        
+        <!--<ListBox>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <local:RoundPanel Background="Azure" Width="600" Height="400"></local:RoundPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <Rectangle Fill="Red" Width="200" Height="100"/>
+            <Rectangle Fill="Blue" Width="200" Height="100"/>
+            <Rectangle Fill="Yellow" Width="200" Height="100"/>
+            <Rectangle Fill="Green" Width="200" Height="100"/>
+            <Rectangle Fill="Gray" Width="200" Height="100"/>
+            <Rectangle Fill="Black" Width="200" Height="100"/>
+            <Rectangle Fill="Gray" Width="200" Height="100"/>
+            <Rectangle Fill="Black" Width="200" Height="100"/>
+        </ListBox>-->
+       
     </Grid>
 </Page>

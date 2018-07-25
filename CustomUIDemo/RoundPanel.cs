@@ -34,6 +34,39 @@ namespace CustomUIDemo
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            //简化版本的CustomPanel
+            //if (Children.Count == 0)
+            //    return finalSize;
+
+            //var count = Children.Count;
+            ////Get the radius of the available size.
+            //double radius = Math.Min(finalSize.Width, finalSize.Height) * 0.5;
+            ////child angle
+            //double childAngle = 360.0 / (Math.Max((double)count, 2));
+            ////sin
+            //var sin = Sin(childAngle / 2);
+            ////cos
+            //var cos = Cos(childAngle / 2);
+            ////SampleRect
+            //var SampleRect = new Rect { Width = 2 * sin * radius, Height = radius };
+            //SampleRect.X = radius - SampleRect.Width / 2.0;
+            ////loop
+            //for (int i = 0; i < Children.Count; i++)
+            //{
+            //    var element = Children[i];
+
+            //    RotateTransform transform = new RotateTransform();
+            //    transform.CenterX = SampleRect.Width / 2.0;
+            //    transform.CenterY = SampleRect.Height;
+            //    var angle = childAngle * i;
+            //    transform.Angle = angle;
+            //    element.RenderTransform = transform;
+            //    element.Arrange(SampleRect);
+            //}
+            //return base.ArrangeOverride(finalSize);
+
+
+            //开始考虑加入ItemsPanel, 这里transform的中心点还是不能用整个圆心做为中心点，不然的话不是以第一个item为开始
             if (Children.Count == 0)
                 return finalSize;
 
@@ -50,12 +83,15 @@ namespace CustomUIDemo
             var SampleRect = new Rect { Width = 2 * sin * radius, Height = radius };
             SampleRect.X = radius - SampleRect.Width / 2.0;
             //loop
-            for (int i=1;i<Children.Count;i++)
+            for (int i=0;i<Children.Count;i++)
             {
                 var element = Children[i];
+
                 RotateTransform transform = new RotateTransform();
                 transform.CenterX = SampleRect.Width / 2.0;
                 transform.CenterY = SampleRect.Height;
+                //transform.CenterX = radius;
+                //transform.CenterY = radius;
                 var angle = childAngle * i;
                 transform.Angle = angle;
                 element.RenderTransform = transform;
