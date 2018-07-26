@@ -3,5 +3,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CustomUIDemo">
 
+
+
+    <Style TargetType="local:RadialMenu" >
+        <Setter Property="Width" Value="260"/>
+        <Setter Property="Height" Value="260"/>
+        <Setter Property="MinWidth" Value="260"/>
+        <Setter Property="MinHeight" Value="260"/>
+        <Setter Property="Background" Value="{ThemeResource TextBoxBackgroundThemeBrush}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RadialMenu">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid x:Name="ContentGrid">
+                            <Ellipse Fill="{TemplateBinding Background}"  
+                                     StrokeThickness="1" 
+                                     VerticalAlignment="Stretch" 
+                                     HorizontalAlignment="Stretch"/>
+                            <local:RadialMenuItemPresenter x:Name="CurrentItemPresenter" 
+                                                            HorizontalAlignment="Stretch" 
+                                                            VerticalAlignment="Stretch">
+                                <local:RadialMenuItemPresenter.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <local:RoundPanel></local:RoundPanel>
+                                    </ItemsPanelTemplate>
+                                </local:RadialMenuItemPresenter.ItemsPanel>
+                            </local:RadialMenuItemPresenter>
+                        </Grid>
+                        <!--step 2 Create the navigation button for navigation code behind first,then UI code-->
+                       
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     
 </ResourceDictionary>

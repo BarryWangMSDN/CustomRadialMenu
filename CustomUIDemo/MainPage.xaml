@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
        
-            <local:RoundPanel Background="Azure" Width="600" Height="400">
+            <!--<local:RoundPanel Background="Azure" Width="600" Height="400">
                 <Rectangle Fill="Red" Width="200" Height="100"/>
                 <Rectangle Fill="Blue" Width="200" Height="100"/>
                 <Rectangle Fill="Yellow" Width="200" Height="100"/>
@@ -18,7 +18,7 @@
                 <Rectangle Fill="Black" Width="200" Height="100"/>
                 <Rectangle Fill="Gray" Width="200" Height="100"/>
                 <Rectangle Fill="Black" Width="200" Height="100"/>         
-            </local:RoundPanel>
+            </local:RoundPanel>-->
         
         
         <!--<ListBox>
@@ -36,6 +36,9 @@
             <Rectangle Fill="Gray" Width="200" Height="100"/>
             <Rectangle Fill="Black" Width="200" Height="100"/>
         </ListBox>-->
+
+        
        
+        
     </Grid>
 </Page>
