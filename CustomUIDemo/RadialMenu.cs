@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -13,14 +15,8 @@ using Windows.UI.Xaml.Media;
 
 namespace CustomUIDemo
 {
-    public sealed class RadialMenu : Control
+    public  class RadialMenu : Control
     {
-        public RadialMenu()
-        {
-            this.DefaultStyleKey = typeof(RadialMenu);
-        }
-
-
         public IRadialMenuItemsControl CurrentItem
         {
             get { return (IRadialMenuItemsControl)GetValue(CurrentItemProperty); }
@@ -31,11 +27,33 @@ namespace CustomUIDemo
         public static readonly DependencyProperty CurrentItemProperty =
             DependencyProperty.Register("CurrentItem", typeof(IRadialMenuItemsControl), typeof(RadialMenu), new PropertyMetadata(null, OnCurrentItemChanged));
 
-        private void OnCurrentItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnCurrentItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as RadialMenu).OnCurrentItemChanged(e);
+        }
+        private void OnCurrentItemChanged(DependencyPropertyChangedEventArgs e)
         {
             CurrentItemChanged?.Invoke(this, e);
         }
 
         public event DependencyPropertyChangedEventHandler CurrentItemChanged;
+
+
+
+        public RadialMenu()
+        {
+            this.DefaultStyleKey = typeof(RadialMenu);
+        }
+
+      
     }
+
+    [MarshalingBehavior(MarshalingType.Agile)]
+    [Threading(ThreadingModel.Both)]
+    [WebHostHidden]
+    public sealed class RadialMenuItemCollection : ObservableCollection<RadialMenuItem>
+    {
+        //
+    }
+
 }

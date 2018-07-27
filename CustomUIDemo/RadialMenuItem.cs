@@ -11,8 +11,8 @@ namespace CustomUIDemo
     {
 
         private RadialMenu _menu;
-
         private IRadialMenuItemsControl _parentItem;
+
         public RadialMenu Menu => _menu;
         public IRadialMenuItemsControl ParentItem => _parentItem;
 

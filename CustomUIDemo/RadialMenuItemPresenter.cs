@@ -14,16 +14,21 @@ namespace CustomUIDemo
 
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
-            if (element is RadialMenuItem menuItem)
+            if(element is RadialMenuItem menuItem)
             {
                 menuItem.SetMenu(Menu);
             }
-            else
-            {
-
-            }
+            
             base.PrepareContainerForItemOverride(element, item);
         }
+        protected override void ClearContainerForItemOverride(DependencyObject element, object item)
+        {
+            base.ClearContainerForItemOverride(element, item);
+        }
 
+        protected override void OnItemsChanged(object e)
+        {
+            base.OnItemsChanged(e);
+        }
     }
 }
