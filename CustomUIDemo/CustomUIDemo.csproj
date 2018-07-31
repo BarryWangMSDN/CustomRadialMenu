@@ -103,6 +103,7 @@
     <Compile Include="RadialMenu.cs" />
     <Compile Include="RadialMenuItem.cs" />
     <Compile Include="RadialMenuItemPresenter.cs" />
+    <Compile Include="RadialMenuSelectionMode.cs" />
     <Compile Include="RoundPanel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -37,8 +37,23 @@
             <Rectangle Fill="Black" Width="200" Height="100"/>
         </ListBox>-->
 
-        
-       
-        
+        <local:RadialMenu>
+            <local:RadialMenuItem>
+                <local:RadialMenuItem.Content>
+                    <TextBlock Text="1" Width="50" Height="50"/>
+                </local:RadialMenuItem.Content>
+            </local:RadialMenuItem>
+            <local:RadialMenuItem>
+                <local:RadialMenuItem.Content>
+                    <TextBlock Text="2"  Width="50" Height="50"/>
+                </local:RadialMenuItem.Content>
+            </local:RadialMenuItem>
+            <local:RadialMenuItem>
+                <local:RadialMenuItem.Content>
+                    <TextBlock Text="3"  Width="50" Height="50"/>
+                </local:RadialMenuItem.Content>
+            </local:RadialMenuItem>
+        </local:RadialMenu>
+      
     </Grid>
 </Page>

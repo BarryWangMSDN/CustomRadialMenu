@@ -85,8 +85,7 @@ namespace CustomUIDemo
             //loop
             for (int i=0;i<Children.Count;i++)
             {
-                var element = Children[i];
-
+                RadialMenuItem element = Children[i] as RadialMenuItem;
                 RotateTransform transform = new RotateTransform();
                 transform.CenterX = SampleRect.Width / 2.0;
                 transform.CenterY = SampleRect.Height;
@@ -94,6 +93,7 @@ namespace CustomUIDemo
                 //transform.CenterY = radius;
                 var angle = childAngle * i;
                 transform.Angle = angle;
+                element.ContentAngle = -angle;
                 element.RenderTransform = transform;
                 element.Arrange(SampleRect);
             }

@@ -10,5 +10,8 @@ namespace CustomUIDemo
     public interface IRadialMenuItemsControl
     {
         RadialMenuItemCollection Items { get; }
+
+
+      
     }
 }
