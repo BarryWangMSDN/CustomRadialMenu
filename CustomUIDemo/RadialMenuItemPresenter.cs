@@ -12,6 +12,16 @@ namespace CustomUIDemo
     {
         public RadialMenu Menu { get; internal set; }
 
+        //
+        // Summary:
+        //     Prepares the specified element to display the specified item.
+        //
+        // Parameters:
+        //   element:
+        //     The element that's used to display the specified item.
+        //
+        //   item:
+        //     The item to display.
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
             if(element is RadialMenuItem menuItem)

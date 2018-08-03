@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Media;
 
 namespace CustomUIDemo
 {
-    [ContentProperty(Name = "Items")]
+    [ContentProperty(Name = "MyItems")]
     [Bindable]
     public class RadialMenu : Control, IRadialMenuItemsControl
     {
@@ -28,7 +28,7 @@ namespace CustomUIDemo
 
         #region IRadialMenuItemsControl
         //Implement the interface, also set the content
-        public RadialMenuItemCollection Items
+        public RadialMenuItemCollection MyItems
         {
             get
             {
@@ -36,27 +36,27 @@ namespace CustomUIDemo
             }
         }
         #endregion
-        public IRadialMenuItemsControl CurrentItem
-        {
-            get { return (IRadialMenuItemsControl)GetValue(CurrentItemProperty); }
-            set { SetValue(CurrentItemProperty, value); }
-        }
+        //public IRadialMenuItemsControl CurrentItem
+        //{
+        //    get { return (IRadialMenuItemsControl)GetValue(CurrentItemProperty); }
+        //    set { SetValue(CurrentItemProperty, value); }
+        //}
 
 
-        // Using a DependencyProperty as the backing store for CurrentItem.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurrentItemProperty =
-            DependencyProperty.Register("CurrentItem", typeof(IRadialMenuItemsControl), typeof(RadialMenu), new PropertyMetadata(null, OnCurrentItemChanged));
+        //// Using a DependencyProperty as the backing store for CurrentItem.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty CurrentItemProperty =
+        //    DependencyProperty.Register("CurrentItem", typeof(IRadialMenuItemsControl), typeof(RadialMenu), new PropertyMetadata(null, OnCurrentItemChanged));
 
-        private static void OnCurrentItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as RadialMenu).OnCurrentItemChanged(e);
-        }
-        private void OnCurrentItemChanged(DependencyPropertyChangedEventArgs e)
-        {
-            CurrentItemChanged?.Invoke(this, e);
-        }
+        //private static void OnCurrentItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //    (d as RadialMenu).OnCurrentItemChanged(e);
+        //}
+        //private void OnCurrentItemChanged(DependencyPropertyChangedEventArgs e)
+        //{
+        //    CurrentItemChanged?.Invoke(this, e);
+        //}
 
-        public event DependencyPropertyChangedEventHandler CurrentItemChanged;
+        //public event DependencyPropertyChangedEventHandler CurrentItemChanged;
 
 
 
@@ -70,6 +70,7 @@ namespace CustomUIDemo
         protected override void OnApplyTemplate()
         {
 
+            base.OnApplyTemplate();
         }
     }
 
@@ -78,7 +79,7 @@ namespace CustomUIDemo
     [WebHostHidden]
     public sealed class RadialMenuItemCollection : ObservableCollection<RadialMenuItem>
     {
-        //
+        
     }
 
 }

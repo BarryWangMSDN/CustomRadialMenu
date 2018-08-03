@@ -9,9 +9,7 @@ namespace CustomUIDemo
 {
     public interface IRadialMenuItemsControl
     {
-        RadialMenuItemCollection Items { get; }
-
-
+        RadialMenuItemCollection MyItems { get; }
       
     }
 }

@@ -34,41 +34,17 @@ namespace CustomUIDemo
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            //简化版本的CustomPanel
-            //if (Children.Count == 0)
-            //    return finalSize;
+            ArrangeChildren(finalSize);
+            return base.ArrangeOverride(finalSize);
 
-            //var count = Children.Count;
-            ////Get the radius of the available size.
-            //double radius = Math.Min(finalSize.Width, finalSize.Height) * 0.5;
-            ////child angle
-            //double childAngle = 360.0 / (Math.Max((double)count, 2));
-            ////sin
-            //var sin = Sin(childAngle / 2);
-            ////cos
-            //var cos = Cos(childAngle / 2);
-            ////SampleRect
-            //var SampleRect = new Rect { Width = 2 * sin * radius, Height = radius };
-            //SampleRect.X = radius - SampleRect.Width / 2.0;
-            ////loop
-            //for (int i = 0; i < Children.Count; i++)
-            //{
-            //    var element = Children[i];
+        }
 
-            //    RotateTransform transform = new RotateTransform();
-            //    transform.CenterX = SampleRect.Width / 2.0;
-            //    transform.CenterY = SampleRect.Height;
-            //    var angle = childAngle * i;
-            //    transform.Angle = angle;
-            //    element.RenderTransform = transform;
-            //    element.Arrange(SampleRect);
-            //}
-            //return base.ArrangeOverride(finalSize);
-
+        private void ArrangeChildren(Size finalSize)
+        {
 
             //开始考虑加入ItemsPanel, 这里transform的中心点还是不能用整个圆心做为中心点，不然的话不是以第一个item为开始
             if (Children.Count == 0)
-                return finalSize;
+                return;
 
             var count = Children.Count;
             //Get the radius of the available size.
@@ -82,8 +58,9 @@ namespace CustomUIDemo
             //SampleRect
             var SampleRect = new Rect { Width = 2 * sin * radius, Height = radius };
             SampleRect.X = radius - SampleRect.Width / 2.0;
+           
             //loop
-            for (int i=0;i<Children.Count;i++)
+            for (int i = 0; i < Children.Count; i++)
             {
                 RadialMenuItem element = Children[i] as RadialMenuItem;
                 RotateTransform transform = new RotateTransform();
@@ -97,12 +74,11 @@ namespace CustomUIDemo
                 element.RenderTransform = transform;
                 element.Arrange(SampleRect);
             }
-            return base.ArrangeOverride(finalSize);
-
         }
 
         private double Sin(double angle)
         {
+            //Math.Round, 保留小数点后5位
             return Math.Round(Math.Sin(angle / 180 * Math.PI), 5);
         }
 

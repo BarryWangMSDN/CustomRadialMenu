@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Markup;
 
 namespace CustomUIDemo
 {
-    [ContentProperty(Name = "Items")]
+    [ContentProperty(Name = "MyItems")]
     [Windows.UI.Xaml.Data.Bindable]
     public class RadialMenuItem : Control, IRadialMenuItemsControl, INotifyPropertyChanged
     {
@@ -18,7 +18,7 @@ namespace CustomUIDemo
         public RadialMenuItem()
         {
             this.DefaultStyleKey = typeof(RadialMenuItem);
-            PrepareElements();
+            PrepareElements();          
         }
 
 
@@ -31,7 +31,7 @@ namespace CustomUIDemo
 
         #region IRadialMenuItemsControl
         private RadialMenuItemCollection _items;
-        public virtual RadialMenuItemCollection Items => _items;
+        public virtual RadialMenuItemCollection MyItems => _items;
 
 
         #endregion
@@ -63,7 +63,7 @@ namespace CustomUIDemo
         internal void SetMenu(RadialMenu menu)
         {
             _menu = menu;
-            _parentItem = menu?.CurrentItem;
+            //_parentItem = menu?.CurrentItem;
         }
 
         protected void PrepareElements()
