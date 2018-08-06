@@ -40,7 +40,7 @@
                             <local:RadialMenuItemPresenter x:Name="CurrentItemPresenter" 
                                                             HorizontalAlignment="Stretch" 
                                                             VerticalAlignment="Stretch"                                              
-                                                            ItemsSource="{Binding Items,RelativeSource={RelativeSource TemplatedParent}}">
+                                                            ItemsSource="{Binding MyItems,RelativeSource={RelativeSource TemplatedParent}}">
                                 <local:RadialMenuItemPresenter.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <local:RoundPanel/>
@@ -48,13 +48,43 @@
                                 </local:RadialMenuItemPresenter.ItemsPanel>
                             </local:RadialMenuItemPresenter>
                         </Grid>
-                        <!--step 2 Create the navigation button for navigation code behind first,then UI code-->
-                        <Button Content="navigate" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <local:NavigationButton x:Name="NavigationButton" VerticalAlignment="Center" HorizontalAlignment="Center" Width="45" Height="45"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
+
+    <Style TargetType="local:NavigationButton" >
+        <Setter Property="Content" Value="&#xE725;"/>
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Background" Value="#466666"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NavigationButton" >
+                    <Grid x:Name="RootGrid">
+                        <Ellipse x:Name="BackgroundElement" StrokeThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <ContentPresenter x:Name="ContentPresenter"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          Content="{TemplateBinding Content}"
+                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                          Padding="{TemplateBinding Padding}"
+                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                          AutomationProperties.AccessibilityView="Raw"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

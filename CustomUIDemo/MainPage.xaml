@@ -38,7 +38,7 @@
         </ListBox>-->
 
         <local:RadialMenu>
-            <local:RadialMenu.Items>
+            <local:RadialMenu.MyItems>
                 <local:RadialMenuItem Content="Color1">
                 </local:RadialMenuItem>
                 <local:RadialMenuItem Content="Color2">
@@ -51,7 +51,7 @@
                 </local:RadialMenuItem>
                 <local:RadialMenuItem Content="Color6">
                 </local:RadialMenuItem>
-            </local:RadialMenu.Items>
+            </local:RadialMenu.MyItems>
            
         </local:RadialMenu>
       
