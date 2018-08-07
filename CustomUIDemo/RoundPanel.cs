@@ -58,14 +58,21 @@ namespace CustomUIDemo
             //SampleRect
             var SampleRect = new Rect { Width = 2 * sin * radius, Height = radius };
             SampleRect.X = radius - SampleRect.Width / 2.0;
-           
+            //给当前Item的Arcsegment进行赋值
+            var baseitem = new ArcSegmentItem();
+            SetArcSegmentItem(baseitem, radius, sin, cos, SampleRect);
+
+
             //loop
             for (int i = 0; i < Children.Count; i++)
             {
-                RadialMenuItem element = Children[i] as RadialMenuItem;
+                RadialMenuItem element = (RadialMenuItem)Children[i];
                 RotateTransform transform = new RotateTransform();
                 transform.CenterX = SampleRect.Width / 2.0;
                 transform.CenterY = SampleRect.Height;
+
+                element.ArcSegments.BasePanel = baseitem;
+
                 //transform.CenterX = radius;
                 //transform.CenterY = radius;
                 var angle = childAngle * i;
@@ -74,6 +81,14 @@ namespace CustomUIDemo
                 element.RenderTransform = transform;
                 element.Arrange(SampleRect);
             }
+        }
+
+
+        public void SetArcSegmentItem(ArcSegmentItem item, double radius, double sin, double cos, Rect sectorRect)
+        {
+            item.Size = new Size(radius, radius);
+            item.StartPoint = new Point(sectorRect.Width / 2 - sin * radius, sectorRect.Height - cos * radius);
+            item.EndPoint = new Point(sectorRect.Width-sin*radius,sectorRect.Height-cos*radius);
         }
 
         private double Sin(double angle)

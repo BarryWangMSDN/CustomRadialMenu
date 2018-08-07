@@ -57,6 +57,16 @@ namespace CustomUIDemo
         // Using a DependencyProperty as the backing store for ContentAngle.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentAngleProperty =
             DependencyProperty.Register("ContentAngle", typeof(double), typeof(RadialMenuItem), new PropertyMetadata(0.0));
+
+        public ArcSegments ArcSegments
+        {
+            get { return (ArcSegments)GetValue(ArcSegmentsProperty); }
+            internal set { SetValue(ArcSegmentsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ArcSegments.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ArcSegmentsProperty =
+            DependencyProperty.Register("ArcSegments", typeof(ArcSegments), typeof(RadialMenuItem), new PropertyMetadata(null));
         #endregion
 
 
