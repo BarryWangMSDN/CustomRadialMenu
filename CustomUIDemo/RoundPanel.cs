@@ -71,16 +71,17 @@ namespace CustomUIDemo
                 transform.CenterX = SampleRect.Width / 2.0;
                 transform.CenterY = SampleRect.Height;
 
-                element.ArcSegments.BasePanel = baseitem;
+               
 
                 //transform.CenterX = radius;
                 //transform.CenterY = radius;
                 var angle = childAngle * i;
                 transform.Angle = angle;
+                element.ArcSegments.BasePanel = baseitem;
                 element.ContentAngle = -angle;
                 element.RenderTransform = transform;
                 element.Arrange(SampleRect);
-            }
+            } 
         }
 
 
@@ -89,6 +90,7 @@ namespace CustomUIDemo
             item.Size = new Size(radius, radius);
             item.StartPoint = new Point(sectorRect.Width / 2 - sin * radius, sectorRect.Height - cos * radius);
             item.EndPoint = new Point(sectorRect.Width-sin*radius,sectorRect.Height-cos*radius);
+            item.StrokeThickness = 20.0;
         }
 
         private double Sin(double angle)

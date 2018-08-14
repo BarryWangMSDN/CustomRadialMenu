@@ -9,22 +9,30 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:RadialMenuItem">
                     <Grid>
-                        <ContentPresenter RenderTransformOrigin="0.5,0.5" Content="{TemplateBinding Content
-                            }" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                            <ContentPresenter.RenderTransform>
-                                <RotateTransform Angle="{Binding ContentAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            </ContentPresenter.RenderTransform>
-                        </ContentPresenter>
-                        <Path x:Name="basepanel" Stroke="#01010101"
+                        <Path x:Name="basepanel" Stroke="Black"
                               StrokeThickness="{Binding ArcSegments.BasePanel.StrokeThickness,RelativeSource={RelativeSource TemplatedParent}}">
                             <Path.Data>
                                 <PathGeometry>
-                                    <PathFigure IsFilled="False" IsClosed="False" StartPoint="{Binding ArcSegments.BasePanel.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
-                                        <ArcSegment Point="{Binding ArcSegments.BasePanel.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" Size="{Binding ArcSegments.BasePanel.Size,RelativeSource={RelativeSource TemplatedParent}}" SweepDirection="Clockwise"/>
+                                    <PathFigure IsFilled="False" IsClosed="False" 
+                                                StartPoint="{Binding ArcSegments.BasePanel.StartPoint,RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ArcSegment Point="{Binding ArcSegments.BasePanel.EndPoint,RelativeSource={RelativeSource TemplatedParent}}" 
+                                                    Size="{Binding ArcSegments.BasePanel.Size,RelativeSource={RelativeSource TemplatedParent}}"
+                                                    SweepDirection="Clockwise"/>
                                     </PathFigure>
                                 </PathGeometry>
                             </Path.Data>
                         </Path>
+                        
+                        <ContentPresenter RenderTransformOrigin="0.5,0.5" 
+                                          Content="{TemplateBinding Content}" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ContentPresenter.RenderTransform>
+                                <RotateTransform Angle="{Binding ContentAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                        
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

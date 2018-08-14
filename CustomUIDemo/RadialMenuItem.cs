@@ -16,9 +16,9 @@ namespace CustomUIDemo
     {
        
         public RadialMenuItem()
-        {
+        {       
             this.DefaultStyleKey = typeof(RadialMenuItem);
-            PrepareElements();          
+            PrepareElements();
         }
 
 
@@ -80,6 +80,8 @@ namespace CustomUIDemo
         {
             _items = new RadialMenuItemCollection();
             _items.CollectionChanged += _items_CollectionChanged;
+            ArcSegments = new ArcSegments();
+            ArcSegments.BasePanel = new ArcSegmentItem();
         }
 
         private void _items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

@@ -37,7 +37,7 @@
             <Rectangle Fill="Black" Width="200" Height="100"/>
         </ListBox>-->
 
-        <local:RadialMenu>
+        <local:RadialMenu Width="300" Height="300">
             <local:RadialMenu.MyItems>
                 <local:RadialMenuItem Content="Color1">
                 </local:RadialMenuItem>

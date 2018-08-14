@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.ApplicationModel.Store;
 
 namespace CustomUIDemo
 {
@@ -36,9 +37,10 @@ namespace CustomUIDemo
             base.ClearContainerForItemOverride(element, item);
         }
 
-        protected override void OnItemsChanged(object e)
+        protected async override void OnItemsChanged(object e)
         {
             base.OnItemsChanged(e);
+            
         }
     }
 }
