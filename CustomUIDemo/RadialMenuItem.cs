@@ -16,7 +16,7 @@ namespace CustomUIDemo
     {
        
         public RadialMenuItem()
-        {       
+        {        
             this.DefaultStyleKey = typeof(RadialMenuItem);
             PrepareElements();
         }
